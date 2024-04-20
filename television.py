@@ -80,11 +80,29 @@ class Television:
 			if self.__volume != self.MIN_VOLUME:
 				self.__volume -= 1
 
-	def get_volume(self):
-		if self.__muted:
-			return 0
-		else:
-			return self.__volume
+	def get_status(self) -> bool:
+		'''
+		Returns the status
+		'''
+		return self.__status
+
+	def get_muted(self) -> bool:
+		'''
+		Returns if it is muted
+		'''
+		return self.__muted
+
+	def get_volume(self) -> int:
+		'''
+		Returns the volume
+		'''
+		return self.__volume
+
+	def get_channel(self) -> int:
+		'''
+		Returns the channel
+		'''
+		return self.__channel
 
 	def __str__(self):
 		return f'Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}'
