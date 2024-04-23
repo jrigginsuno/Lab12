@@ -7,7 +7,7 @@ class Television:
 	MIN_CHANNEL: int = 0
 	MAX_CHANNEL: int  = 3
 
-	def __init__(self):
+	def __init__(self) -> None:
 		'''
 		Sets default values
 		'''
@@ -17,13 +17,13 @@ class Television:
 		self.__saved_volume: int = self.MIN_VOLUME
 		self.__channel: int = self.MIN_CHANNEL
 
-	def power(self):
+	def power(self) -> None:
 		'''
 		Turns the power on
 		'''
 		self.__status = not self.__status
 
-	def mute(self):
+	def mute(self) -> None:
 		'''
 		Mutes the volume
 		'''
@@ -35,7 +35,7 @@ class Television:
 				self.__volume = self.MIN_VOLUME
 			self.__muted = not self.__muted
 
-	def channel_up(self):
+	def channel_up(self) -> None:
 		'''
 		Increases the channel
 		'''
@@ -48,7 +48,7 @@ class Television:
 			else:
 				self.__channel += 1
 
-	def channel_down(self):
+	def channel_down(self) -> None:
 		'''
 		Decreases the channel
 		'''
@@ -58,7 +58,7 @@ class Television:
 			else:
 				self.__channel -= 1
 
-	def volume_up(self):
+	def volume_up(self) -> None:
 		'''
 		Increases the volume
 		'''
@@ -69,7 +69,7 @@ class Television:
 			if self.__volume != self.MAX_VOLUME:
 				self.__volume += 1
 
-	def volume_down(self):
+	def volume_down(self) -> None:
 		'''
 		Decreases  the volume
 		'''
@@ -80,29 +80,11 @@ class Television:
 			if self.__volume != self.MIN_VOLUME:
 				self.__volume -= 1
 
-	def get_status(self) -> bool:
-		'''
-		Returns the status
-		'''
-		return self.__status
-
-	def get_muted(self) -> bool:
-		'''
-		Returns if it is muted
-		'''
-		return self.__muted
-
 	def get_volume(self) -> int:
-		'''
-		Returns the volume
-		'''
-		return self.__volume
+		if self.__muted:
+			return 0
+		else:
+			return self.__volume
 
-	def get_channel(self) -> int:
-		'''
-		Returns the channel
-		'''
-		return self.__channel
-
-	def __str__(self):
+	def __str__(self) -> str:
 		return f'Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}'
